@@ -5,6 +5,8 @@ const Users = require('./users-model.js');
 
 const router = express.Router();
 
+
+//Get Restricted users
 router.get('/users', Users.restricted, (req, res) => {
     Users.find()
         .then(users => {
@@ -13,6 +15,8 @@ router.get('/users', Users.restricted, (req, res) => {
         .catch(err => res.send(err));
 });
 
+
+//Register New user
 router.post('/register', (req, res) => {
     let user = req.body;
     console.log('password arriving from client', user.password);
@@ -30,6 +34,8 @@ router.post('/register', (req, res) => {
       });
 });
 
+
+//Login user
 router.post('/login', (req, res) => {
     let { username, password } = req.body;
   
